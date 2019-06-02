@@ -52,8 +52,9 @@ namespace MyHospitalizationPal.Server
             //});
 
             //Inregistram contextul
+
             services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MobilityDb")));
+            options.UseSqlServer(Configuration.GetConnectionString("MobilityDb"), b => b.MigrationsAssembly("MyHospitalizationPal.Server")));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IRegisterService, RegisterService>();
             services.AddTransient<ILoginService, LoginService>();
